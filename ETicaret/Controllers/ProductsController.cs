@@ -1,11 +1,9 @@
-﻿using API.Data.DataContext;
-using API.Data.DbModels;
-using Microsoft.AspNetCore.Http;
+﻿
+using API.Core.DbModels;
+using API.Infrastructure.DataContext;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace ETicaret.Controllers
 {
@@ -28,10 +26,10 @@ namespace ETicaret.Controllers
         }
 
 
-        [HttpGet]
-        public string GetProduct()
+        [HttpGet("{id}")]
+        public ActionResult<Product> GetProduct(int id)
         {
-            return "single product";
+            return _context.Products.Find(id);
         }
 
 
